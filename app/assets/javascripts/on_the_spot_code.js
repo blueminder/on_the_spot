@@ -27,6 +27,8 @@ function initializeOnTheSpot(n){
         method_name   = el.attr('data-display-method') || '',
         callback      = el.attr('data-callback');
         buttons       = el.attr('data-buttons');
+        style         = el.attr('style');
+        cssclass      = el.attr('data-cssclass');
 
     var options = {
         tooltip: tooltip_text,
@@ -50,6 +52,13 @@ function initializeOnTheSpot(n){
         options['cancel'] = cancel_text;
         options['submit'] = ok_text;
         options['onblur'] = 'cancel';
+    }
+    if (style != null) {
+        options['style'] = style;
+        cssclass = 'inherit';
+    }
+    if (cssclass != null) {
+        options['cssclass'] = cssclass;
     }
     if (edit_type != null) {
         options.type = edit_type;

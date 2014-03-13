@@ -20,6 +20,9 @@ module OnTheSpot
     #   selected     : (optional) boolean, text selected on edit
     #   callback     : (optional) a javascript function that is called after form has been submitted
     #   buttons      : (optional) enables ok and cancel buttons
+    #   style        : (optional) add css to field
+    #   cssclass     : (optional} assign css class
+
     def on_the_spot_edit(object, field, options={})
       options.reverse_merge!(:ok_text     => t('on_the_spot.ok'),
                              :cancel_text => t('on_the_spot.cancel'),
@@ -41,6 +44,8 @@ module OnTheSpot
 
       editable_type = options[:type].nil? ? nil : options[:type].to_sym
       html_options[:'data-edittype']    = editable_type.to_s unless editable_type.nil?
+      html_options[:style]       = options[:style]
+      html_options[:'data-cssclass']    = options[:cssclass]
       if editable_type == :select && options[:loadurl].nil?
         # we should find a hash
         select_data = options[:data]
