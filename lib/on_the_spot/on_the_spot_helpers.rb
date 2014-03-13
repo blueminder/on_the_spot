@@ -19,6 +19,7 @@ module OnTheSpot
     #   url          : (optional) URL to post to if you don't want to use the standard routes
     #   selected     : (optional) boolean, text selected on edit
     #   callback     : (optional) a javascript function that is called after form has been submitted
+    #   buttons      : (optional) enables ok and cancel buttons
     def on_the_spot_edit(object, field, options={})
       options.reverse_merge!(:ok_text     => t('on_the_spot.ok'),
                              :cancel_text => t('on_the_spot.cancel'),
@@ -48,6 +49,9 @@ module OnTheSpot
       elsif editable_type == :textarea
         html_options[:'data-rows']         = options[:rows]
         html_options[:'data-columns']      = options[:columns]
+      end
+      if options[:buttons] == 1
+        html_options[:'data-buttons']      = options[:buttons]
       end
       html_options[:'data-ok']             = options[:ok_text]
       html_options[:'data-cancel']         = options[:cancel_text]

@@ -26,13 +26,11 @@ function initializeOnTheSpot(n){
         onblur_action = el.attr('data-onblur') || 'cancel',
         method_name   = el.attr('data-display-method') || '',
         callback      = el.attr('data-callback');
-
+        buttons       = el.attr('data-buttons');
 
     var options = {
         tooltip: tooltip_text,
         placeholder: tooltip_text,
-        cancel: cancel_text,
-        submit: ok_text,
         select: selected,
         onerror: function (settings, original, xhr) {
             original.reset();
@@ -40,7 +38,7 @@ function initializeOnTheSpot(n){
             alert(xhr.responseText);
         },
         loadurl: load_url,
-        onblur: onblur_action,
+        onblur: 'submit',
         submitdata: {
           authenticity_token: auth_token,
           display_method: method_name,
@@ -48,6 +46,11 @@ function initializeOnTheSpot(n){
         },
         callback: callback ? new Function("value", "settings", "return "+callback+"(this, value, settings);") : null
     };
+    if (buttons == '1') {
+        options['cancel'] = cancel_text;
+        options['submit'] = ok_text;
+        options['onblur'] = 'cancel';
+    }
     if (edit_type != null) {
         options.type = edit_type;
     }
