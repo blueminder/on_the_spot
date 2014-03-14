@@ -29,6 +29,7 @@ function initializeOnTheSpot(n){
         buttons       = el.attr('data-buttons');
         style         = el.attr('style');
         cssclass      = el.attr('data-cssclass');
+        width         = el.attr('data-width');
 
     var options = {
         tooltip: tooltip_text,
@@ -59,6 +60,9 @@ function initializeOnTheSpot(n){
     }
     if (cssclass != null) {
         options['cssclass'] = cssclass;
+    }
+    if (width != null) {
+        options['width'] = width;
     }
     if (edit_type != null) {
         options.type = edit_type;
