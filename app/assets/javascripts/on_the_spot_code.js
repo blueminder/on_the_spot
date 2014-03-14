@@ -86,6 +86,9 @@ function initializeOnTheSpot(n){
         options.rows = rows;
         options.cols = columns;
     }
+    else if (edit_type == 'datepicker') {
+        options['datepicker'] = { dateFormat: "yy-mm-dd" };
+    }
 
     el.editable(data_url, options);
 }

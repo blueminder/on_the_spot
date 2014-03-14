@@ -5,4 +5,5 @@
 //
 //= require jquery.jeditable.mini.js
 //= require jquery.jeditable.checkbox.js
+//= require jquery.jeditable.datepicker
 //= require on_the_spot_code
