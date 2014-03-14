@@ -42,6 +42,12 @@ function initializeOnTheSpot(n){
         },
         loadurl: load_url,
         onblur: 'submit',
+        onsubmit: (function (settings, original) {
+            if (original.revert == $('input',this).val()) {
+                original.reset();
+                return false;
+            }
+        }),
         submitdata: {
           authenticity_token: auth_token,
           display_method: method_name,
