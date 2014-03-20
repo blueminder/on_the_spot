@@ -38,7 +38,8 @@ function initializeOnTheSpot(n){
         onerror: function (settings, original, xhr) {
             original.reset();
             //just show the error-msg for now
-            alert(xhr.responseText);
+            alert('Could not update field');
+            console.log(xhr.responseText);
         },
         loadurl: load_url,
         onblur: 'submit',
